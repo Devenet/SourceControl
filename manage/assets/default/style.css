@@ -1,0 +1,163 @@
+html { font-size: 14px; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+form input { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; padding-left:2px; padding-right: 2px; }
+body {
+  width: 800px;
+  margin: 20px auto;
+}
+
+abbr { cursor: help; }
+a, .form-link { color: #337ab7; text-decoration: none; }
+a:hover, a:focus, .form-link:hover, .form-link:focus { color: #23527c; text-decoration: underline; }
+a:focus, a:active, .form-link:focus, .form-link:active { outline: 3px solid #FFC123; border: none; }
+a.visited { color: rgb(85, 26, 139); }
+p { margin-top: 0; }
+pre { display: block; padding: 5px 10px; margin: 5px 0 5px; font-size: 12px; line-height: 1.42857143; word-break: break-all; word-wrap: break-word; color: #333333; background-color: #f5f5f5; border: 1px solid #cccccc; }
+code { padding: 2px 4px; font-size: 90%; color: #c7254e; background-color: #f9f2f4; border-radius: 0; }
+code, kbd, pre, samp { font-family: Menlo, Monaco, Consolas, "Courier New", monospace; }
+
+
+header { margin: 20px auto; border-bottom: 1px solid #000; position: relative; }
+header h1 { font-size: 34px; margin: 5px auto 0; color: #333; }
+header h2 { font-weight: normal; color: #666; margin: 0 auto 10px 2px; }
+header a { display: block; position: absolute; right: 2px; top: -4px; transition: all 0.5s ease; }
+header a:hover { transform: rotate(180deg); }
+
+.messages { position: relative; background-color: #fafafa; padding: 10px; margin: 10px 0 20px; border: 1px solid #f4f4f4; }
+.messages p { margin: 0 auto; }
+.messages a.close-link { position: absolute; top: 4px; right: 5px; font-size: 10px; }
+.messages h3 { margin: 0; }
+.messages h3 + p { margin-top: 0; margin-left: 12px; }
+.msg-error { color: #a94442; }
+.msg-error::before { content: '❗'; margin-right: 5px; }
+.msg-info { color: #31708f; }
+.msg-success { color: #3c763d; }
+.msg-success::before { content: '✅'; margin-right: 5px; }
+
+.details ul {
+  margin: 0 auto 0 0;
+  padding-left: 0;
+  list-style: none;
+  border-left: 1px solid grey;
+}
+.details li {
+  margin-left: 20px;
+  line-height: 16px;
+  margin-bottom: 4px;
+}
+.details li::before { display: inline-block; content: '‣'; margin-left: -10px; margin-right: 5px; vertical-align: middle; font-size: 16px; }
+
+#action_links p { float: left; }
+#action_links p + p { float: right; }
+#action_boxes { clear: both; }
+#action_boxes h2 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+#action_boxes form p {
+  clear: both;
+  margin: 5px 0 5px;
+}
+#action_boxes form label {
+  width: 27%;
+  padding-right: 8px;
+  font-size: 12px;
+  line-height: 20px;
+  float: left;
+  text-align: right;
+}
+#action_boxes form input[type="text"] {
+  width: 68%;
+}
+#action_boxes form p.form_buttons {
+  margin: 10px 0 auto 30%;
+}
+
+#box_add_repository,
+#box_admin_keys {
+  float: left;
+  width: 368px;
+  background-color: #f5f5f5;
+  border: 1px solid #cccccc;
+  margin: 0 10px 20px 0;
+  padding: 10px;
+  transition: display 1s linear;
+}
+#box_admin_keys {
+  float: right;
+  margin: 0 0 20px 10px;
+}
+#box_admin_keys ul {
+  font-size: 13px;
+}
+
+section {
+	clear: both;
+	margin-bottom: 20px;
+}
+section:first-of-type {
+  margin-top: 20px;
+}
+section h2 {
+	color: #222;
+	margin: 15px auto 0;
+}
+#api {
+	line-height: 18px;
+}
+#api li {
+	margin-bottom: 10px;
+}
+
+
+table {
+  margin: 20px 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+table tr {
+  border-top: 1px solid grey;
+}
+table td {
+  padding: 8px 0;
+  font-size: 13px;
+}
+td.item-enabled {
+  text-align: center;
+  font-size: 20px;
+}
+td.item-name b {
+  font-size: 15px;
+}
+td.item-infos samp {
+	color: #444;
+}
+td.item-modification {
+  text-align: right;
+}
+td.item-update {
+  text-align: center;
+}
+
+.details {
+  border-top: none;
+}
+.details td {
+  padding: 0 0 10px 35px;
+}
+
+.form-inline { display: inline; margin: 0; padding: 0; }
+.form-inline .form-link { padding: 0; }
+.form-link { background-color: transparent; border: none; cursor: pointer; }
+.form-link:focus { outline: none; }
+
+
+footer {
+  margin: 50px auto 20px;
+  color: #555;
+}
+footer a {
+  color: #333;
+}
+footer a:hover {
+  color: #000;
+}
