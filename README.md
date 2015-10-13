@@ -24,10 +24,10 @@ git clone https://github.com/nicolabricot/SourceControl sc
 
 Otherwise you can download the last version on the [releases page](https://github.com/nicolabricot/SourceControl/releases), and unzip it as a `sc` folder into your web server root folder.
 
-Then, in the folder `manage` copy the `config.default.php` file into `config.php`.
+Then, in the folder `data` copy the `config.default.php` file into `config.php`.
 
 ```sh
-cp sc/manage/config.default.php sc/manage/config.php
+cp sc/data/config.default.php sc/data/config.php
 ```
 
 ## Application
