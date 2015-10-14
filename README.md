@@ -11,7 +11,9 @@ Provides an API to update Git repositories and easily manage them.
 ### Requirements
 
 * The Apache configuration files written on `.htaccess` are for Apache 2.4.
-* The application will have right to write in the `data` folder.
+* PHP 5 >= 5.5.0 or PHP 7 is required (due to the use of `array_column`).
+* The application must have right to write in the `data` folder.  
+  (after installing, if no repository are listed, it's because the app couldn't save the data)
 * If you want to send email, be sure your server is well configured.
 
 ### Source & Setup
@@ -43,4 +45,4 @@ We recommanded to you to have two virtualhosts or two distinc configuration file
 2. The second for the management page  
   _The URL `server.tld/sourcecontrol` points to the `sc/manage` server file and have an authentification_
 
-With this configuration only the two web folder can be reached throug your web server.
+With this configuration only the two web folders can be reached throug your web server.
