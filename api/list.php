@@ -15,7 +15,7 @@ if (empty($_GET['token'])) { $api->error_empty(); }
 // Only super users can list repositories
 $keys_db = new Keys();
 $keys = $keys_db['*']['keys'];
-$authorized_keys = array_column($keys, 'key');
+$authorized_keys = array_column($keys, 'token');
 
 if (! in_array($_GET['token'], $authorized_keys))
 {
