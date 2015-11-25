@@ -196,3 +196,13 @@ function removeKeyBuilder($repo_id, $key_order)
 {
   return '<form class="form-inline" method="post"><input type="hidden" name="key" value="remove" /><input type="hidden" name="repo_id" value="'. $repo_id .'" /><input type="hidden" name="key_order" value="'. $key_order .'" /><input type="submit" value="remove" class="form-link" onclick="return confirm(\'Are you sure to remove this key?\');" /></form>';
 }
+
+function displayDomainLink()
+{
+	$result = $_SERVER['SERVER_NAME'];
+	if (isset($_CONFIG['domain_url']))
+	{
+		$result = '<a href="'.htmlspecialchars($_CONFIG['domain_url']).'">'.$result.'</a>';
+	}
+	return $result;
+}

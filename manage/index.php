@@ -1,6 +1,6 @@
 <?php
 
-define('SC_VERSION', '0.3.0');
+define('SC_VERSION', '0.4.0');
 define('SC_CONFIG', '../data/config.php');
 
 // Load configuration file
@@ -13,6 +13,7 @@ require SC_CONFIG;
 require '../core/str.laravel.php';
 define('ROOT_URL', $_SERVER['SERVER_NAME'].dirname($_SERVER['REQUEST_URI']));
 define('API_URL', isset($_CONFIG['api_url']) ? $_CONFIG['api_url'] : ROOT_URL.'/api');
+define('APP_THEME', isset($_CONFIG['theme']) ? $_CONFIG['theme'] : 'default');
 
 // Load repositories
 require '../core/repositories.db.php';
@@ -36,7 +37,7 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
 <meta name="robots" content="noindex, nofollow, noarchive" />
 <meta name="author" content="Nicolas Devenet" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="assets/<?php echo $_CONFIG['theme']; ?>/style.css?<?php echo $assets_version; ?>" rel="stylesheet" />
+<link href="assets/<?php echo APP_THEME; ?>/style.css?<?php echo $assets_version; ?>" rel="stylesheet" />
 <link rel="apple-touch-icon" sizes="57x57" href="assets/default/favicon/apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon" sizes="60x60" href="assets/default/favicon/apple-touch-icon-60x60.png" />
 <link rel="apple-touch-icon" sizes="72x72" href="assets/default/favicon/apple-touch-icon-72x72.png" />
@@ -63,8 +64,8 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
 
 <header>
 	<h1>Source Control</h1>
-	<h2><?php echo $_SERVER['SERVER_NAME']; ?></h2>
-	<a href="./"><img alt="SourceControl logo" src="assets/<?php echo $_CONFIG['theme']; ?>/infinity.png" /></a>
+	<h2><?php echo displayDomainLink(); ?></h2>
+	<a href="./"><img alt="SourceControl logo" src="assets/<?php APP_THEME; ?>/infinity.png" /></a>
 </header>
 
 <div class="container">
@@ -185,6 +186,6 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
   <br />&mdash; <small>by <a href="http://nicolas.devenet.info" rel="external">Nicolas Devenet</a>.</small></p>
 </footer>
 
-<script src="assets/<?php echo $_CONFIG['theme']; ?>/script.js?<?php echo $assets_version; ?>"></script>
+<script src="assets/<?php echo APP_THEME; ?>/script.js?<?php echo $assets_version; ?>"></script>
 </body>
 </html>
