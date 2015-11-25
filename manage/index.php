@@ -53,7 +53,7 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
 <link rel="icon" type="image/png" href="assets/default/favicon/android-chrome-192x192.png" sizes="192x192" />
 <link rel="icon" type="image/png" href="assets/default/favicon/favicon-16x16.png" sizes="16x16" />
 <link rel="manifest" href="assets/default/favicon/manifest.json" />
-<link rel="shortcut icon" href="assets/default/favicon/favicon.ico" />
+<link rel="shortcut icon" href="assets/<?php echo APP_THEME; ?>/favicon/favicon.ico" />
 <meta name="msapplication-TileColor" content="#2d89ef" />
 <meta name="msapplication-TileImage" content="assets/default/favicon/mstile-144x144.png" />
 <meta name="msapplication-config" content="assets/default/favicon/browserconfig.xml" />
@@ -65,7 +65,7 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
 <header>
 	<h1>Source Control</h1>
 	<h2><?php echo displayDomainLink(); ?></h2>
-	<a href="./"><img alt="SourceControl logo" src="assets/<?php APP_THEME; ?>/infinity.png" /></a>
+	<a href="./"><img alt="SourceControl logo" src="assets/<?php echo APP_THEME; ?>/infinity.png" /></a>
 </header>
 
 <div class="container">
