@@ -37,7 +37,8 @@ if (! empty($_POST))
 					$messages[] = array( 'content' => 'Some required fields were empty, no repository added.', 'level' => 'error' );
 					break;
 				}
-				$repo_id = Str::slug(htmlspecialchars($_POST['repo_name']), '');
+				$repo_id = str_replace('/', '-', htmlspecialchars($_POST['repo_name']));
+				$repo_id = Str::slug($repo_id, '');
 				if (empty($repo_id)) $repo_id = time();
 				// Build the repository
 				$repo = [
