@@ -104,6 +104,9 @@ section h2 {
 #api {
 	line-height: 18px;
 }
+#api h2 {
+  margin-bottom: 10px;
+}
 #api li {
 	margin-bottom: 10px;
 }

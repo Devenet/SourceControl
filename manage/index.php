@@ -1,6 +1,6 @@
 <?php
 
-define('SC_VERSION', '0.4.0');
+define('SC_VERSION', '0.5.0');
 define('SC_CONFIG', '../data/config.php');
 
 // Load configuration file
@@ -129,7 +129,8 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
 
 	<section id="api">
 		<h2>API</h2>
-		<ul>
+		<p><a id="doc" href="documentation">Show documentation</a></p>
+		<ul id="box_doc">
 			<li><b>List repositories</b> <small>only global keys</small>
 				<br /><pre><?php echo API_URL; ?>/list.php?token=<code>global_key</code></pre>
 			</li>

@@ -7,6 +7,10 @@ document.getElementById('add_repository').addEventListener('click', function(eve
 document.getElementById('box_admin_keys').style.display = "none";
 document.getElementById('admin_keys').addEventListener('click', function(event) { var box = document.getElementById('box_admin_keys'); if (box.style.display == "none") { box.style.display = "block"; } else { box.style.display = "none"; } event.preventDefault(); return false; });
 
+// Toogle API documentation
+document.getElementById('box_doc').style.display = "none";
+document.getElementById('doc').addEventListener('click', function(event) { var box = document.getElementById('box_doc'); if (box.style.display == "none") { box.style.display = "block"; this.innerText = 'Hide documentation'; } else { box.style.display = "none"; this.innerText = 'Show documentation'; } event.preventDefault(); return false; });
+
 // Toogle details keys repository form
 var details_keys_lines = document.getElementsByClassName("details-keys");
 for (var i=0, length=details_keys_lines.length; i<length; i++) { details_keys_lines[i].style.display = 'none'; }
