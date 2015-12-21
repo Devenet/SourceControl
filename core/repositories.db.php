@@ -30,6 +30,9 @@ class Repositories extends DataBase {
 	public function update($id)
 	{
 		$path = $this->data[$id]['path'];
+		if (! is_dir($path))
+			throw new \Exception('The Git folder is not found on the system. Operation aborded.');
+
 		$result = shell_exec("cd $path; git pull 2>&1");
 
 		$this->logged = true;

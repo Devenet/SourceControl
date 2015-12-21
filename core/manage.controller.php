@@ -18,7 +18,15 @@ if (! empty($_POST))
 					break;
 				}
 
-				$result =  ucfirst(trim($repos_db->update($_POST['repo_id'])));
+				try
+				{
+						$result =  ucfirst(trim($repos_db->update($_POST['repo_id'])));
+				}
+				catch (\Exception $e)
+				{
+					$messages[] = array( 'content' => $e->getMessage(), 'level' => 'error' );
+					break;
+				}
 
 				// Send an email if neeed
 				if (! empty($_CONFIG['email'])) { Repositories::Email($_CONFIG['email'], $repos_db[$_POST['repo_id']], $result); }

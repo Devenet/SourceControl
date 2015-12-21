@@ -1,6 +1,6 @@
 <?php
 
-define('SC_VERSION', '0.5.0');
+define('SC_VERSION', '0.5.1');
 define('SC_CONFIG', '../data/config.php');
 
 // Load configuration file
