@@ -46,7 +46,7 @@ class Repositories extends DataBase {
 		$result = date('Y-m-d H:i:s').' • '.$_SERVER['REMOTE_ADDR'].' ★ '.$repo['id'];
 		$result .= PHP_EOL.'‣ '.$content.PHP_EOL.PHP_EOL;
 		$result .= htmlspecialchars(urldecode(file_get_contents('php://input')), ENT_NOQUOTES);
-		$result .= PHP_EOL.PHP_EOL.'--'.PHP_EOL.$_SERVER['SERVER_NAME'];
+		$result .= PHP_EOL.PHP_EOL.'—'.PHP_EOL.$_SERVER['SERVER_NAME'];
 
 		mail( $destinator,
 	      	'[SourceControl] Repository “'.$repo['name'].'” updated',
