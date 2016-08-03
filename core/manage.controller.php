@@ -9,6 +9,32 @@ if (! empty($_POST))
 	{
 		switch($_POST['repository'])
 		{
+			// Status of the repository
+			case 'status':
+				if (empty($_POST['repo_id'])) break;
+				if (! isset($repos_db[$_POST['repo_id']]))
+				{
+					$messages[] = array( 'content' => 'The repository to update is not found.', 'level' => 'error' );
+					break;
+				}
+
+				try
+				{
+						$result =  ucfirst(trim($repos_db->status($_POST['repo_id'])));
+				}
+				catch (\Exception $e)
+				{
+					$messages[] = array( 'content' => $e->getMessage(), 'level' => 'error' );
+					break;
+				}
+
+				$messages[] = array(
+					'title' => 'Status of “'. $repos_db[$_POST['repo_id']]['name'] .'”&hellip;',
+					'content' => nl2br($result),
+					'level' => preg_match('/fatal|error/i', $result) ? 'error' : (preg_match('/up-to-date./', $result) ? 'info' : 'other')
+				);
+				break;
+
 			// Update a repository
 			case 'update':
 				if (empty($_POST['repo_id'])) break;
@@ -28,12 +54,9 @@ if (! empty($_POST))
 					break;
 				}
 
-				// Send an email if neeed
-				if (! empty($_CONFIG['email'])) { Repositories::Email($_CONFIG['email'], $repos_db[$_POST['repo_id']], $result); }
-
 				$messages[] = array(
 					'title' => 'Updating “'. $repos_db[$_POST['repo_id']]['name'] .'”&hellip;',
-					'content' => $result,
+					'content' => nl2br($result),
 					'level' => preg_match('/fatal|error/i', $result) ? 'error' : (preg_match('/Already up-to-date./', $result) ? 'info' : 'other')
 				);
 				break;
@@ -200,6 +223,10 @@ function removeRepoBuilder($repo)
 function updateRepoBuilder($repo)
 {
   return '<form class="form-inline" method="post"><input type="hidden" name="repository" value="update" /><input type="hidden" name="repo_id" value="'. $repo['id'] .'" /><input type="submit" value="update" class="update-link" /></form>';
+}
+function statusRepoBuilder($repo)
+{
+  return '<form class="form-inline" method="post"><input type="hidden" name="repository" value="status" /><input type="hidden" name="repo_id" value="'. $repo['id'] .'" /><input type="submit" value="status" class="form-link update-link" /></form>';
 }
 function removeKeyBuilder($repo_id, $key_order)
 {

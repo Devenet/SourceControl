@@ -19,7 +19,7 @@ class Repositories extends DataBase {
 			'moodpicker' => [
 					'id' => 'moodpicker',
 					'name' => 'Mood Picker',
-					'path' => '/data/git/MoodPicker',
+					'path' => '/data/git/moodpicker',
 					'enabled' => false,
 					'last_update' => NULL
 				]
@@ -41,15 +41,25 @@ class Repositories extends DataBase {
 		return $result;
 	}
 
+	// Get status of Git repository
+	public function status($id)
+	{
+		$path = $this->data[$id]['path'];
+		if (! is_dir($path))
+			throw new \Exception('The Git folder is not found on the system. Operation aborded.');
+
+		$result = shell_exec("cd $path; git status 2>&1");
+		return $result;
+	}
+
 	public static function Email($destinator, $repo, $content)
 	{
-		$result = date('Y-m-d H:i:s').' • '.$_SERVER['REMOTE_ADDR'].' ★ '.$repo['id'];
-		$result .= PHP_EOL.'‣ '.$content.PHP_EOL.PHP_EOL;
-		$result .= htmlspecialchars(urldecode(file_get_contents('php://input')), ENT_NOQUOTES);
+		$result = '‣ ['.$repo['id'].'] updated from '.$_SERVER['REMOTE_ADDR'];
+		$result .= PHP_EOL.PHP_EOL.$content;
 		$result .= PHP_EOL.PHP_EOL.'—'.PHP_EOL.$_SERVER['SERVER_NAME'];
 
 		mail( $destinator,
-	      	'[SourceControl] Repository “'.$repo['name'].'” updated',
+	      	'[SC] Repository “'.$repo['name'].'” updated',
 					$result,
 					'X-Mailer: PHP/'.phpversion()
 		);

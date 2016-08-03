@@ -1,8 +1,8 @@
-# ![Logo of Source Control](https://github.com/nicolabricot/SourceControl/raw/master/manage/assets/default/favicon/favicon.png) SourceControl
+# ![Logo of Source Control](https://github.com/Devenet/SourceControl/raw/master/manage/assets/default/favicon/favicon.png) SourceControl
 
 Provides an API to update Git repositories and easily manage them.
 
-![Screenshot of Source Control](https://github.com/nicolabricot/SourceControl/raw/master/sourcecontrol.png)
+![Screenshot of Source Control](https://github.com/Devenet/SourceControl/raw/master/sourcecontrol.png)
 
 ***
 
@@ -21,10 +21,10 @@ Provides an API to update Git repositories and easily manage them.
 The simplest way is to clone the current repository.
 
 ```sh
-git clone https://github.com/nicolabricot/SourceControl sc
+git clone https://github.com/Devenet/SourceControl sc
 ```
 
-Otherwise you can download the last version on the [releases page](https://github.com/nicolabricot/SourceControl/releases), and unzip it as a `sc` folder into your web server root folder.
+Otherwise you can download the last version on the [releases page](https://github.com/Devenet/SourceControl/releases), and unzip it as a `sc` folder into your web server root folder.
 
 Then, in the folder `data` copy the `config.default.php` file into `config.php`.
 

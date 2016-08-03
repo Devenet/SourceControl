@@ -1,6 +1,6 @@
 <?php
 
-define('SC_VERSION', '0.5.2');
+define('SC_VERSION', '0.6.0');
 define('SC_CONFIG', '../data/config.php');
 
 // Load configuration file
@@ -102,7 +102,7 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
 				</p>
 				<p>
 					<label for="repo_enabled">Enabled</label>
-					<input type="checkbox" name="repo_enabled" checked />
+					<input type="checkbox" name="repo_enabled" checked disabled />
 				</p>
 				<p class="form_buttons">
 					<button type="submit">Add</button>
@@ -127,41 +127,28 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
 		</div>
 	</div>
 
-	<section id="api">
-		<h2>API</h2>
-		<p><a id="doc" href="#documentation">Show documentation</a></p>
-		<ul id="box_doc">
-			<li><b>List repositories</b> <small>only global keys</small>
-				<br /><pre><?php echo API_URL; ?>/list.php?token=<code>global_key</code></pre>
-			</li>
-			<li><b>Update a repository</b>
-				<br /><pre><?php echo API_URL; ?>/update.php?repository=<code>repository_id</code>&amp;token=<code>repository_key|global_key</code></pre>
-				<small>The <code>repository_id</code> is the alphanumeric  identifiant after the ★ symbole.</small>
-			</li>
-
-		</ul>
-	</section>
-
 	<section id="repositories">
 		<h2>Repositories</h2>
 		<table class="repositories">
 			<?php
 
+				$count = 0;
 				foreach ($repos as $id => $repo)
 				{
 					$repo_keys = $keys_db[$id]['keys'];
 
 					// Repo global information
-					echo '<tr>',
-						 '<td class="item-enabled">', ($repo['enabled'] ? '&#x2611;' : '&#x2610;'), '</td>',
-						 '<td class="item-name"><b>', $repo['name'], '</b><br /><small>★ <abbr title="Repository ID: ', $id, '">', $id, '</abbr></small></td>',
-						 '<td class="item-infos"><small><samp>', $repo['path'], '</samp><br />', (is_null($repo['last_update']) ? 'never updated' : date('Y-m-d  H:i', $repo['last_update'])), '</small></td>',
-						 '<td class="item-modification">', detailsKeyBuilder($repo, $repo_keys), ' &middot; ', removeRepoBuilder($repo), '</td>',
+					echo '<tr'.(++$count % 2 == 0 ? ' class="bg"' : '').'>',
+						 '<td class="item-enabled">', ($repo['enabled'] ? '<input type="checkbox" checked disabled>' : '<input type="checkbox" disabled>'), '</td>',
+						 '<td class="item-name"><b>', $repo['name'], '</b><br /><small>[<abbr title="Repository ID: ', $id, '">', $id, '</abbr>]</small></td>',
+						 '<td class="item-infos"><small><samp>', $repo['path'], '</samp><br />', (is_null($repo['last_update']) ? 'never updated' : 'updated '.date('Y-m-d  H:i', $repo['last_update'])), '</small></td>',
+						 '<td class="item-modification">', detailsKeyBuilder($repo, $repo_keys), ' &middot; ', removeRepoBuilder($repo),
+						 '<br>', statusRepoBuilder($repo), '</td>',
 						 '<td class="item-update">', updateRepoBuilder($repo), '</td>',
 						 '</tr>';
 
 					// Repo keys details
-					echo '<tr class="details details-keys" id="details-keys-', $id, '"><td colspan="5"><ul>';
+					echo '<tr class="details details-keys'.($count % 2 == 0 ? ' bg' : '').'" id="details-keys-', $id, '"><td colspan="5"><ul>';
 					if (! empty($repo_keys))
 					{
 						foreach ($repo_keys as $count => $key)
@@ -180,11 +167,30 @@ $assets_version = substr(md5(SC_VERSION), 0, 5);
 		</table>
 	</section>
 
+	<section id="api">
+		<p><a id="doc" href="#documentation">Show documentation</a></p>
+		<div id="box_doc">
+			<h2>API</h2>
+			<ul>
+				<li><b>List repositories</b> <small>only global keys</small>
+					<br /><pre><?php echo API_URL; ?>/list.php?token=<code>global_key</code></pre>
+				</li>
+				<li><b>Update a repository</b>
+					<br /><pre><?php echo API_URL; ?>/update.php?repository=<code>repository_id</code>&amp;token=<code>repository_key|global_key</code></pre>
+				</li>
+			<li><b>Get status of a repository</b>
+				<br /><pre><?php echo API_URL; ?>/status.php?repository=<code>repository_id</code>&amp;token=<code>repository_key|global_key</code></pre>
+			</li>
+			</ul>
+			<p><small>The <code>repository_id</code> is the alphanumeric  identifiant between [].</small></p>
+		</div>
+	</section>
+
 </div>
 
 <footer>
-	<p><a rel="external" href="https://github.com/nicolabricot/SourceControl">SourceControl</a> <small>v<?php echo SC_VERSION; ?></small>
-  <br />&mdash; <small>by <a href="http://nicolas.devenet.info" rel="external">Nicolas Devenet</a>.</small></p>
+	<p>‣ <a rel="external" href="https://github.com/Devenet/SourceControl">SourceControl</a> <small>v<?php echo SC_VERSION; ?></small>
+  <br><small class="footer-by">by <a href="http://nicolas.devenet.info" rel="external">Nicolas Devenet</a>.</small></p>
 </footer>
 
 <script src="assets/<?php echo APP_THEME; ?>/script.js?<?php echo $assets_version; ?>"></script>
