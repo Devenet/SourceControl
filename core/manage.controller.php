@@ -76,7 +76,7 @@ if (! empty($_POST))
 						'id' => $repo_id,
 						'name' => htmlspecialchars($_POST['repo_name']),
 						'path' => htmlspecialchars($_POST['repo_path']),
-						'enabled' => isset($_POST['repo_enabled']),
+						'enabled' => true,
 						'last_update' => NULL
 				];
 				// Check that no other repository have the same id
