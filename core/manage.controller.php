@@ -214,7 +214,8 @@ if (! empty($_POST))
 
 function detailsKeyBuilder($repo, $keys)
 {
-  return '<a href="#details-keys-'. $repo['id'] .'" class="details-keys-link">'. Str::pluralCount('key', count($keys)) .'</a>';
+  $count = isset($keys) ? count($keys) : 0;
+  return '<a href="#details-keys-'. $repo['id'] .'" class="details-keys-link">'. Str::pluralCount('key', $count) .'</a>';
 }
 function removeRepoBuilder($repo)
 {
