@@ -59,9 +59,8 @@ class Repositories extends DataBase {
 		$result .= PHP_EOL.PHP_EOL.'—'.PHP_EOL.$_SERVER['SERVER_NAME'];
 
 		mail( $destinator,
-	      	'[SC] Repository “'.$repo['name'].'” updated',
-					$result,
-					'X-Mailer: PHP/'.phpversion()
+					'[SC] Repository “'.$repo['name'].'” updated',
+					$result
 		);
 	}
 
